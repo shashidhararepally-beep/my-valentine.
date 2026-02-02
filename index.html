@@ -3,94 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <title>MY LOVE ❤️</title>
-
   <style>
     body {
       margin: 0;
       height: 100vh;
       background: pink;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
       text-align: center;
     }
 
     h1 {
-      color: #b30059;
+      color: #c2185b;
     }
 
-    .container {
+    #question {
+      width: 100%;
+    }
+
+    #buttons {
+      margin-top: 30px;
       position: relative;
+      height: 200px;
     }
 
     button {
-      padding: 12px 25px;
       font-size: 18px;
+      padding: 12px 28px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
     }
 
-    #yes {
-      background: #ff4d88;
+    #yesBtn {
+      background-color: #e91e63;
       color: white;
       margin-right: 20px;
     }
 
-    #no {
-      background: #fff;
+    #noBtn {
+      background-color: #555;
+      color: white;
       position: absolute;
     }
 
+    #result {
+      display: none;
+      width: 100%;
+    }
+
     img {
-      width: 200px;
-      margin-top: 20px;
+      width: 220px;
+      margin-top: 25px;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="container" id="box">
+  <div id="question">
     <h1>Do you love me? 💖</h1>
 
-    <button id="yes">YES</button>
-    <button id="no">NO</button>
+    <div id="buttons">
+      <button id="yesBtn" onclick="yesClicked()">YES</button>
+      <button id="noBtn" onmouseover="moveNo()">NO</button>
+    </div>
   </div>
 
-  <!-- Romantic Music -->
-  <audio id="music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
+  <div id="result">
+    <h1>YAY!!! 💖✨</h1>
+    <p><b>UNNADEH SULLANTHA ILLU EDHI KUDA AMMUTHAVA BIDDAA 🏡</b></p>
+
+    <!-- WORKING GIF -->
+    <img 
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVjZDU1YzYyZjU3OGYxYzM1M2Y0N2Y1ZTEyZmI5ZjMyM2YyYjFiMiZjdD1n/MDJ9IbxxvDUQM/giphy.gif"
+      alt="Love Sticker"
+    >
+  </div>
 
   <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const box = document.getElementById("box");
-    const music = document.getElementById("music");
+    function moveNo() {
+      const noBtn = document.getElementById("noBtn");
+      const x = Math.random() * 220;
+      const y = Math.random() * 140;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
 
-    // NO button runs away
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-
-    // YES button action
-    yesBtn.addEventListener("click", () => {
-      box.innerHTML = `
-        <h1>YAY!!! 💖✨</h1>
-
-        <p style="font-size:18px; font-weight:bold;">
-          UNNADEH SULLANTHA ILLU EDHI KUDA AMMUTHAVA BIDDAA 🏡
-        </p>
-
-        <img src="https://media.tenor.com/8m8Jm0U1j0cAAAAi/love-heart.gif" alt="Sticker">
-      `;
-
-      music.play();
-    });
+    function yesClicked() {
+      document.getElementById("question").style.display = "none";
+      document.getElementById("result").style.display = "block";
+    }
   </script>
 
 </body>
