@@ -1,124 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
+  <meta charset="UTF-8" />
+  <title>MY LOVE ❤️</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #f8b6c1, #f6d1dc);
       font-family: Arial, sans-serif;
+      background: pink;
+      text-align: center;
+      padding-top: 50px;
       overflow: hidden;
     }
 
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      width: 320px;
-    }
-
     h1 {
-      font-size: 26px;
-      margin-bottom: 20px;
+      font-size: 28px;
+      color: #b30059;
     }
 
-    .buttons {
+    #buttons {
+      margin-top: 40px;
       position: relative;
-      height: 80px;
     }
 
     button {
-      font-size: 18px;
-      padding: 12px 30px;
-      border-radius: 8px;
+      font-size: 20px;
+      padding: 12px 25px;
       border: none;
+      border-radius: 10px;
       cursor: pointer;
+      margin: 10px;
     }
 
-    .yes {
-      background: #e63946;
+    #yes {
+      background-color: #ff4d88;
       color: white;
     }
 
-    .no {
-      background: #ddd;
+    #no {
+      background-color: #555;
+      color: white;
       position: absolute;
-      right: 0;
     }
 
-    .success {
+    #result {
       display: none;
+      margin-top: 30px;
     }
 
-    .success h1 {
-      font-size: 30px;
-    }
-
-    .success p {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-
-    .gif {
-      width: 100%;
-      border-radius: 12px;
-      margin: 15px 0;
+    img {
+      width: 220px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="card" id="question">
-    <h1>MY LOVE,<br>will you be my Valentine? 💘</h1>
+  <h1>Do you love me? 💖</h1>
 
-    <div class="buttons">
-      <button class="yes" onclick="showSuccess()">YES</button>
-      <button class="no" id="noBtn">NO</button>
-    </div>
+  <div id="buttons">
+    <button id="yes">YES 💕</button>
+    <button id="no">NO 😅</button>
   </div>
 
-  <div class="card success" id="success">
-    <h1>💖 YAY!!! 💖</h1>
-    <p>Best decision ever 😘</p>
-
-    <img class="gif"
-      src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"
-      alt="celebration">
-
+  <div id="result">
+    <h1>YAY!!! 💖✨</h1>
+    <p><b>UNNADEH SULLANTHA ILLU EDHI KUDA AMMUTHAVA BIDDAA 🏡</b></p>
+    <img src="FD97E26A-99EC-4AD0-98A6-3ED2E4BC642A.png" alt="Sticker" />
     <p>I love you ❤️</p>
   </div>
 
-  <audio id="loveMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="music" src="romantic.mp3"></audio>
 
   <script>
-    const noBtn = document.getElementById("noBtn");
+    const yes = document.getElementById("yes");
+    const no = document.getElementById("no");
+    const result = document.getElementById("result");
+    const buttons = document.getElementById("buttons");
+    const music = document.getElementById("music");
 
-    noBtn.addEventListener("mouseenter", () => {
-      const parent = document.querySelector(".buttons");
-      const maxX = parent.offsetWidth - noBtn.offsetWidth;
-      const maxY = parent.offsetHeight - noBtn.offsetHeight;
-
-      noBtn.style.left = Math.random() * maxX + "px";
-      noBtn.style.top = Math.random() * maxY + "px";
-    });
-
-    function showSuccess() {
-      document.getElementById("question").style.display = "none";
-      document.getElementById("success").style.display = "block";
-
-      const music = document.getElementById("loveMusic");
-      music.volume = 0.6;
-      music.play();
+    function moveNoButton() {
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 300 - 150;
+      no.style.transform = `translate(${x}px, ${y}px)`;
     }
+
+    no.addEventListener("mouseover", moveNoButton);
+    no.addEventListener("click", moveNoButton);
+
+    yes.addEventListener("click", () => {
+      buttons.style.display = "none";
+      result.style.display = "block";
+      music.play();
+    });
   </script>
 
 </body>
